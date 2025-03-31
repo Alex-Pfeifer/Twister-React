@@ -23,12 +23,12 @@ function App() {
         setUser(prevState => ({...prevState, name: name || prevState.name}));
     }
 
-    const changeFollowers = sum => {
-        setStats(prevState => ({...prevState, followers: prevState.followers + sum < 0 ? 0 : prevState.followers + sum}))
-    }
-
-    const changeFollowing = sum => {
-        setStats(prevState => ({...prevState, following: prevState.following + sum < 0 ? 0 : prevState.following + sum}))
+    const changeStats = (statsType, sum) => {
+        setStats(prevStats => {
+            let res = prevStats[statsType] + sum;
+            res = res < 0 ? 0 : res;
+            return {...prevStats, [statsType]: res};
+        })
     }
 
     return (
@@ -38,8 +38,7 @@ function App() {
                 stats,
                 changeAvatar,
                 changeName,
-                changeFollowers,
-                changeFollowing
+                changeStats
             }}>
                 <Navigation/>
                 <Body/>
