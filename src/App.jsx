@@ -24,15 +24,22 @@ function App() {
         setUser( {...user, name: name || user.name});
     }
 
-    const changeFollowers = sum => {
-        setStats(prevStats => ({...prevStats, followers: prevStats.followers + sum < 0 ? 0 : prevStats.followers + sum}));
+    // const changeFollowers = sum => {
+    //     setStats(prevStats => ({...prevStats, followers: prevStats.followers + sum < 0 ? 0 : prevStats.followers + sum}));
+    // }
+    //
+    // const changeFollowing = sum => {
+    //     setStats(prevStats => ({...prevStats, following: prevStats.following + sum < 0 ? 0 : prevStats.following + sum}));
+    // }
+
+
+    const changeStats = (statsTyte, sum) => {
+        setStats(prevStats => {
+            let res = prevStats[statsTyte] +sum;
+            res = res < 0 ? 0 : res;
+            return {...prevStats, [statsTyte]: res};
+        })
     }
-
-
-    const changeFollowing = sum => {
-        setStats(prevStats => ({...prevStats, following: prevStats.following + sum < 0 ? 0 : prevStats.following + sum}));
-    }
-
 
     return (
         <div className={'app'}>
@@ -41,8 +48,9 @@ function App() {
                 stats,
                 changeAvatar,
                 changeAvatarName,
-                changeFollowers,
-                changeFollowing
+                // changeFollowers,
+                // changeFollowing
+                changeStats
             }}>
                 <Navigation/>
                 <Body/>
