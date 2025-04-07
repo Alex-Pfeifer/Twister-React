@@ -1,10 +1,9 @@
-import React from 'react';
-import Avatar from './Avatar';
+import Avatar from "./Avatar.jsx";
 
 const Navigation = () => {
     return (
-        <div className={'nav'}>
-            <Avatar size={'small'} />
+        <div className={`nav`}>
+            <Avatar size={'small'}/>
         </div>
     );
 };
