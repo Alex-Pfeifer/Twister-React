@@ -1,0 +1,19 @@
+import {CHANGE_AVATAR, CHANGE_NAME} from "../actions/userAction.js";
+
+/*
+type User = {
+name: string,
+avatar: string
+}
+*/
+
+export const userReducer = (user, action) => {
+    switch (action.type) {
+        case CHANGE_AVATAR:
+            return {...user, avatar: action.payload || user.avatar};
+        case CHANGE_NAME:
+            return {...user, name: action.payload || user.name}
+        default:
+            return user;
+    }
+}
